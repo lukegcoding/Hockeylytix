@@ -1,0 +1,15 @@
+#DATA
+*.csv
+*.json
+
+#NOTEBOOKS
+*.ipynb
+
+#ENVIRONMENT VARS
+.env
+
+#VENV
+venv
+
+#PYCACHE
+*.pyc
