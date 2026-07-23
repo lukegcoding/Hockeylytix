@@ -10,7 +10,7 @@ def get_connection():
         f"SERVER=localhost;"
         f"DATABASE={os.environ['DB_NAME']};"
         f"UID=sa;"
-        f"PWD={os.environ['MSSQL_PASSWORD']};"
+        f"PWD={os.environ['MSSQL_SA_PASSWORD']};"
         f"Encrypt=yes;"
         f"TrustServerCertificate=yes;"
     )
