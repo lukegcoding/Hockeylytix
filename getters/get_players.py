@@ -39,5 +39,5 @@ def get_team_roster(team_abbrev: str, season: str) -> pd.DataFrame:
 
 if __name__ == "__main__":
     players_df = get_team_roster("COL", "20252026")
-    players_df.to_csv("players.csv", index=False)
+    players_df.to_csv("data/players_COL_20252026.csv", index=False)
     print(f"Saved {len(players_df)} players to players.csv")

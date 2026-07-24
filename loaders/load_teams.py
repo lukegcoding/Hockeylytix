@@ -1,10 +1,5 @@
-import sys
-import os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "getters"))
-
-from get_teams import get_current_teams
-from db import get_connection
+from getters.get_teams import get_current_teams
+from db.connection import get_connection
 
 def insert_teams(df):
     conn = get_connection()

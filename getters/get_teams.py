@@ -58,9 +58,11 @@ def get_current_teams() -> pd.DataFrame:
 
     current_teams_df = current_teams_df[["id", "franchiseId", "fullName", "triCode"]]
 
+    current_teams_df = current_teams_df.sort_values(by="fullName", ignore_index=True)
+
     return current_teams_df
 
 if __name__ == "__main__":
     teams_df = get_current_teams()
-    teams_df.to_csv("teams.csv", index=False)
+    teams_df.to_csv("data/teams.csv", index=False)
     print(f"Saved {len(teams_df)} teams to teams.csv")
