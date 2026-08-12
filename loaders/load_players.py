@@ -4,7 +4,6 @@ from db.connection import get_connection
 from db.readers.team_reader import get_team_abbrevs
 from getters.get_players import get_team_roster
 
-#Doesn't totally work yet (Need to debug being able to see how many new players were added)
 
 def upsert_players(df):
     conn = get_connection()
