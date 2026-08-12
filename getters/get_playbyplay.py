@@ -61,6 +61,29 @@ def parse_plays(pbp: dict) -> list:
 
     return plays
 
+def parse_roster_spots(pbp: dict) -> list:
+    """
+    Returns a list of dicts, one per player who dressed for this game,
+    with enough info to stub a `players` row if needed and populate
+    `nhl_roster`.
+    """
+
+    game_id = pbp["id"]
+    roster = []
+
+    for spot in pbp["rosterSpots"]:
+        roster.append({
+            "game_id": game_id,
+            "player_id": spot["playerId"],
+            "team_id": spot["teamId"],
+            "first_name": spot["firstName"].get("default"),
+            "last_name": spot["lastName"].get("default"),
+            "jersey_number": spot.get("sweaterNumber"),
+            "position_code": spot.get("positionCode")
+        })
+
+    return roster
+
 if __name__ == "__main__":
     pbp = get_play_by_play(2025021174)
     plays = parse_plays(pbp)
