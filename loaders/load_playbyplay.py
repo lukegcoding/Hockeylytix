@@ -1,5 +1,5 @@
 from db.connection import get_connection
-from getters.get_playbyplay import get_play_by_play, parse_plays
+from getters.get_playbyplay import parse_plays
 
 def upsert_play(cursor, play):
     cursor.execute("""
@@ -40,11 +40,10 @@ def upsert_play_player(cursor, event_id, player_id, role):
             INSERT (event_id, player_id, role) VALUES (?, ?, ?);
         """, (event_id, player_id, role, event_id, player_id, role))
 
-def load_games_plays(game_id):
+def load_games_plays(pbp):
     conn = get_connection()
     cursor = conn.cursor()
 
-    pbp = get_play_by_play(game_id)
     plays = parse_plays(pbp)
 
     for play in plays:
@@ -55,7 +54,9 @@ def load_games_plays(game_id):
 
     conn.commit()
     conn.close()
-    print(f"Loaded {len(plays)} plays for game {game_id}")
+    print(f"Loaded {len(plays)} plays for game {pbp['id']}")
 
 if __name__ == "__main__":
-    load_games_plays(2024020001)
+    from getters.get_playbyplay import get_play_by_play
+    pbp = get_play_by_play(2024020001)
+    load_games_plays(pbp)
