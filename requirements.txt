@@ -2,3 +2,4 @@ pandas
 requests
 pyodbc
 dotenv
+dash
